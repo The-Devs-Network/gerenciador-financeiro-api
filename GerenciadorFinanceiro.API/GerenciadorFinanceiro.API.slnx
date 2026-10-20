@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="../GerenciadorFinanceiro.Application/GerenciadorFinanceiro.Application.csproj" />
+  <Project Path="../GerenciadorFinanceiro.Core/GerenciadorFinanceiro.Core.csproj" />
+  <Project Path="../GerenciadorFinanceiro.Infrastructure/GerenciadorFinanceiro.Infrastructure.csproj" />
+  <Project Path="../GerenciadorFinanceiro.Tests/GerenciadorFinanceiro.Tests.csproj" />
+  <Project Path="GerenciadorFinanceiro.API.csproj" />
+</Solution>
