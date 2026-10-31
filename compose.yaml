@@ -1,0 +1,40 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: gerenciador-financeiro-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: GerenciadorFinanceiroDB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: teste123
+    ports:
+      - "5432:5432"
+    volumes:
+      - gerenciador_financeiro_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d GerenciadorFinanceiroDB"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - backend_network
+
+  serilog:
+    image: datalust/seq:latest
+    container_name: seq
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+      SEQ_FIRSTRUN_ADMINPASSWORD: teste123
+    volumes:
+      - seq-data:/data
+    networks:
+      - backend_network
+
+volumes:
+  gerenciador_financeiro_postgres_data:
+  seq-data:
+
+networks:
+  backend_network:
+    driver: bridge
