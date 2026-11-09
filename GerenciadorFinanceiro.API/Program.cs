@@ -1,4 +1,5 @@
 using GerenciadorFinanceiro.API.Modules;
+using GerenciadorFinanceiro.Infrastructure;
 using Microsoft.AspNetCore.Localization;
 using Scalar.AspNetCore;
 using System.Globalization;
@@ -17,6 +18,9 @@ builder.Services.AddApiModules(builder.Configuration);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+// Configuração do DbContext
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
